@@ -1,0 +1,44 @@
+// Позволяет централизовать управление размерами элементов. Пример использования
+
+/*
+h2 {
+    @include breakpoint(large){
+        font-size: 3rem;
+    }
+}
+
+развернется во что-то типа
+@media (min-width: 64em) {
+    h2 {
+        font-size: 3rem;
+    }
+}
+
+*/
+
+
+// 640px, 1024px, 1400px
+$breakpoints-up: (
+    'medium': '40em',
+    'large': '64em',
+    'xlarge': '87.5em',
+);
+
+// 639px, 1023px, 1399px
+$breakpoints-down: (
+    'medium': '39.9375em',
+    'large': '63.9375em',
+    'xlarge': '87.4375em',
+);
+
+@mixin breakpoint($size) {
+    @media (min-width: map-get($breakpoint-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (min-width: map-get($breakpoint-down, $size)) {
+        @content;
+    }
+}
