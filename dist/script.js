@@ -1,1 +1,1 @@
-consloke.log("hello from me!");
+console.log("hello from me!");
